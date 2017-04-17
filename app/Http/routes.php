@@ -11,6 +11,30 @@
 |
 */
 
+
 Route::get('/', function () {
     return view('welcome');
 });
+
+//Routes for login page for users
+Route::get('studentlogin', function () {
+    return view('login.student');
+});
+Route::get('lecturerlogin', function () {
+    return view('login.lecturer');
+});
+Route::get('/reserved/auth/admin-login', function () {
+    return view('login.admin');
+});
+
+Route::get('post', function () {
+    return 'login.student';
+});
+
+
+//Post routes for users login
+Route::post('studentlogin', 'StudentController@login');
+Route::post('lecturerlogin', 'LecturerController@login');
+Route::post('adminlogin', 'AdminController@login');
+
+
