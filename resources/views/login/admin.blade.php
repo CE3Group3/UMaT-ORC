@@ -16,7 +16,7 @@
 
 
 	<label for="name">Password</label><br/>
-	<input placeholder="Enter password" name="pass" type="text"  required><br/>
+	<input placeholder="Enter password" name="pass" type="password"  required><br/>
 
 
 	<input type="submit" value="Submit">

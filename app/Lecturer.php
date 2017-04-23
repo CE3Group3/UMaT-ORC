@@ -6,13 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 use DB;
 use PDO;
 use Hash;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Session;
 class Lecturer extends Model
 {
     protected $table = 'lecturers';
 
     protected $fillable = ['username', 'password'];
 
-    public function checkUser($username , $password)
+    public function getUser($username)
     {
 
         $pdo = DB::connection('mysql')->getPdo();
@@ -20,23 +22,36 @@ class Lecturer extends Model
         $statement->execute([$username]);
         $results = $statement->fetchAll(PDO::FETCH_ASSOC);
         $results = array_filter($results);
-        // return $results[0];
+        return $results;
 
-        if(!empty($results)){
-            $result = $results[0];
-            if(Hash::check($password,$result['password'])){
-                return 'Success';
-            }else{
+    }
+    public static function getCourses($id){
+//        return Result::where('index_no',"=" ,$indexNo)
+//            ->where('approved',"=" ,0)
+//            ->get();
+        return LecturerCourse::where('lecturer_id', '=' , $id)
+            ->get();
 
-                $errorMessage = 'Password incorrect';
-                return view('errors.error', compact('errorMessage'));
-            }
-        }
-        else{
+    }
 
-            $errorMessage = 'User does not exist';
-            return view('errors.error', compact('errorMessage'));
-        }
+    public static function getClassList($course_code){
+
+        $course = substr($course_code,0,2);
+        $year = Carbon::now()->year;
+        $dept = substr($course_code,0,2);
+        $class  = substr($course_code,3,1);
+        $current_year = $year - $class;
+//        $index_year = substr($current_year,2);
+       // $deptNo = self::getDeptNo($class);
+//        return $dept;
+
+        return Student::where('year', '=', $current_year)
+                        ->where('dept_id', '=',$dept)
+                        ->orderBy('index_no', 'asc')
+                        ->get();
+    }
+
+    private static function getDeptNo($class){
 
     }
 }

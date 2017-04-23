@@ -12,7 +12,7 @@
 		<input placeholder="Enter Index Number" name="username" type="text"  required>
 		<label for="name">Index Number</label>
 
-		<input placeholder="Enter Reference Number" name="pass" type="text"  required>
+		<input placeholder="Enter Reference Number" name="pass" type="password"  required>
 		<label for="name">Reference Number</label>
 
 		<input type="submit" value="Submit">

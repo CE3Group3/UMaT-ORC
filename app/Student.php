@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use DB;
 use PDO;
 use Auth;
+use App\Result;
 
 class Student extends Model
 {
@@ -14,7 +15,7 @@ class Student extends Model
     protected $fillable = ['student_name', 'ref_no', 'index_no' , 'dept_id' , 'year'];
 
 
-    public function checkUser($username , $password)
+    public function getUser($username)
     {
 
         $pdo = DB::connection('mysql')->getPdo();
@@ -23,26 +24,15 @@ class Student extends Model
         $results = $statement->fetchAll(PDO::FETCH_ASSOC);
         $results = array_filter($results);
         // return $results[0];
-
-        if(!empty($results)){
-            $result = $results[0];
-            if($username == $result['index_no'] && $password == $result['ref_no']){
-                return 'Success';
-            }elseif($username == $result['index_no'] && $password != $result['ref_no']){
-
-                $errorMessage = 'wrong password';
-                return view('errors.error', compact('errorMessage'));
-            }else{
-
-                $errorMessage = "something went wrong";
-                return view('errors.error', compact('errorMessage'));
-            }
-        }
-        else{
-
-            $errorMessage = ' Wrong Index number';
-            return view('errors.error', compact('errorMessage'));
-        }
+        return $results;
 
     }
+
+    public static function getResult($indexNo){
+        return Result::where('index_no',"=" ,$indexNo)
+            ->where('approved',"=" ,0)
+            ->get();
+
+    }
+
 }

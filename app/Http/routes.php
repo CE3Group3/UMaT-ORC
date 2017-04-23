@@ -27,14 +27,18 @@ Route::get('/reserved/auth/admin-login', function () {
     return view('login.admin');
 });
 
-Route::get('post', function () {
-    return 'login.student';
-});
+Route::get('proceed','StudentController@proceed');
+Route::get('lecturer/dashboard','LecturerController@dashboardLecturer');
+Route::get('showresult','StudentController@showresult');
+Route::get('logout','StudentController@logout');
 
 
 //Post routes for users login
 Route::post('studentlogin', 'StudentController@login');
 Route::post('lecturerlogin', 'LecturerController@login');
+Route::post('lecturer/fill', 'LecturerController@course');
 Route::post('adminlogin', 'AdminController@login');
+Route::post('fillresults', 'LecturerController@fillresult');
+
 
 
