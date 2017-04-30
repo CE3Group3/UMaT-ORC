@@ -172,8 +172,8 @@ class StudentTableSeeder extends Seeder
                 ['index_no' => '42202114','ref_no' => '00001040','student_name' => 'Sean Corey Carter',
                     'dept_id' => 'EL', 'year' => '2014',
                 ],
-                ['index_no' => '42402915','ref_no' => '000305515','student_name' => 'Frank Mark Willingham',
-                    'dept_id' => 'CE', 'year' => '2015',
+                ['index_no' => '42400014','ref_no' => '00001040','student_name' => 'Frank Mark Willingham',
+                    'dept_id' => 'CE', 'year' => '2014',
                 ]
 
 

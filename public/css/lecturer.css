@@ -1,0 +1,12 @@
+select{
+    display: block;
+    width: 50%;
+    margin: 30px auto;
+}
+h2{
+    font-size: 22px;
+    text-align: center;
+    color: #000;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}

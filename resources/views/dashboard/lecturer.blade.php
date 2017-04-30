@@ -1,30 +1,36 @@
-<!DOCTYPE html>
-<html>
+@extends('layouts.master')
+@section('title' , 'Lecturer')
 
-<head>
-    <meta charset="utf-8" />
-</head>
+@section('head')
+    <link href="{{URL::To('css/welcome.css')}}" rel='stylesheet' type='text/css'>
+    <link href="{{URL::to('css/lecturer.css')}}" rel='stylesheet' type='text/css'>
+@endsection
 
-<body>
- <h1>Please select the course to fill </h1>
+@section('logout')
+    @if(false)
+        <a href="{{URL::to('student/logout')}}">Logout</a>
+    @endif
+@endsection
+
+@section('content')
+
+    <div class="message-wrapper">
+    <h2>Please select the course to fill </h2>
+
+
  <form method="post" action="{{URL::to('lecturer/fill')}}">
+     <div>
      <input type="hidden" name="_token" value="{{ csrf_token() }}">
 <select name="course" required>
 @foreach($course_codes as $course_code)
     <option value="{{$course_code->course_code}}">{{$course_code->course_code}}</option>
-        {{$course_code->course_code}}
 
 @endforeach
 </select>
 
- <input type="submit" value="Proceed">
- </form>
+ <input class="button" type="submit" value="Proceed">
+     </div>
 
-<br/>
-<br/>
-<br/>
-<br/>
-<hr/>
-<p><a href="{{URL::to('logout ')}}">Logout</a></p>
-</body>
-</html>
+ </form>
+    </div>
+@endsection

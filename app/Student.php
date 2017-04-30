@@ -30,7 +30,7 @@ class Student extends Model
 
     public static function getResult($indexNo){
         return Result::where('index_no',"=" ,$indexNo)
-            ->where('approved',"=" ,0)
+            ->where('approved',"=" ,1)
             ->get();
 
     }

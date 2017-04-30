@@ -1,0 +1,64 @@
+body{
+    background-color:rgb(230,230,230);
+    margin: 0;
+    padding: 0;
+}
+
+header{
+    display: block;
+    text-align: center;
+    height: 160px;
+    background-color: #263025;
+}
+h1{
+    margin: 0;
+    padding: 0;
+    color: white;
+    font-size: 24px;
+
+}
+label{
+    display: block;
+}
+.button{
+    display: inline-block;
+    /*width: 30%;*/
+    padding: 10px 20px;
+    border: 2px solid #263025;
+    color: #263025;
+    font-size: 16px;
+    text-decoration: none;
+    margin: 10px 10px 10px 0;
+    transition: all .6s;
+    min-width: 100px;
+    text-align: center;
+    border-radius: 5px;
+}
+.cover-photo > img{
+    margin: 20px;
+}
+.button:hover {
+    background: #263025;
+    color: #fff;
+}
+.form-design{
+    width: 65%;
+    margin: 40px auto;
+    border: 2px solid #263025;
+    padding: 20px;
+    border-radius: 5px;
+}
+.message-wrapper{
+    text-align: center;
+    border: 2px solid #263025;
+    width: 45%;
+    border-radius: 5px;
+    margin: 50px auto;
+}
+
+p.hidden{
+    display: none;
+}
+.page1,.page2,.page3,.page4{
+    display: none;
+}

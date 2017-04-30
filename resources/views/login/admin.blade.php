@@ -1,13 +1,19 @@
-<!DOCTYPE html>
-<html>
+@extends('layouts.master')
+@section('title' , 'Home')
 
-<head>
-	<meta charset="utf-8" />
-</head>
+@section('head')
+	<link href="{{URL::To('css/welcome.css')}}" rel='stylesheet' type='text/css'>
+@endsection
 
-<body>
+@section('logout')
+	@if(false)
+		<a href="{{URL::to('student/logout')}}">Logout</a>
+	@endif
+@endsection
 
-<form action="{{URL::to('adminlogin')}}" method="post">
+@section('content')
+
+<form class="form-design" action="{{URL::to('admin/login')}}" method="post">
 	<input type="hidden" name="_token" value="{{ csrf_token() }}">
 
 
@@ -19,9 +25,7 @@
 	<input placeholder="Enter password" name="pass" type="password"  required><br/>
 
 
-	<input type="submit" value="Submit">
+	<input class="button" type="submit" value="Submit">
 
 </form>
-</body>
-
-</html>
+@endsection

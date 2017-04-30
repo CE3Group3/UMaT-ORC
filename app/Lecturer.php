@@ -33,6 +33,14 @@ class Lecturer extends Model
             ->get();
 
     }
+    public static function getCourseName($course_code){
+        $pdo = DB::connection('mysql')->getPdo();
+        $statement = $pdo->prepare("SELECT course_name FROM courses WHERE course_code = ?;");
+        $statement->execute([$course_code]);
+        $results = $statement->fetchAll(PDO::FETCH_ASSOC);
+        $results = array_filter($results);
+        return $results;
+    }
 
     public static function getClassList($course_code){
 

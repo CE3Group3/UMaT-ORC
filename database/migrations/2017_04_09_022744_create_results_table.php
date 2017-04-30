@@ -16,6 +16,7 @@ class CreateResultsTable extends Migration
             $table->increments('id');
             $table->string('index_no');
             $table->string('course_code');
+            $table->string('course_name');
             $table->string('class');
             $table->integer('marks');
             $table->integer('approved')->default(0);

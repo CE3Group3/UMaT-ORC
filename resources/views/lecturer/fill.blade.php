@@ -1,23 +1,45 @@
-<!DOCTYPE html>
-<html>
+@extends('layouts.submaster')
+@section('title' , 'Home')
 
-<head>
-    <meta charset="utf-8" />
-</head>
+@section('head')
+    <link href="{{URL::to('css/welcome.css')}}" rel='stylesheet' type='text/css'>
 
-<body>
-<form action="{{URL::to('fillresults')}}" method="post">
+@endsection
+
+@section('logout')
+    @if(false)
+        <a href="{{URL::to('student/logout')}}">Logout</a>
+    @endif
+@endsection
+
+@section('content')
+
+    <form action="{{URL::to('fillresults')}}" method="post">
     <input type="hidden" name="_token" value="{{ csrf_token() }}">
-@foreach($classList as $result)
-        <label>{{$result->index_no}}</label>
-        <input type="text" name="marks[]"/>
-        <input type="hidden" name="indexNo[]" value="{{$result->index_no}}" />
-        <br/>
-        <br/>
 
-@endforeach
-    <input type="submit" value="Submit">
-</form>
+ @if($classList->count())
+    @foreach($classList as $result)
+        <div class="student-marks input-field">
+            <label>{{$result->index_no}}</label>
+            <input type="text" name="marks[]"/>
+            <input type="hidden" name="indexNo[]" value="{{$result->index_no}}" />
+        </div>
+
+
+    @endforeach
+        <div id="submit"> <input class="button" type="submit" value="Submit"></div>
+
+    </form>
+     {{--@include('pagination.custom' , ['paginator' => $classList])--}}
+     @else
+            <div class="message-wrapper">
+
+                <h2>Sorry your class list is not available</h2>
+                <a class="button" href="{{URL::to('lecturer/dashboard')}}">Proceed</a>
+                <a class="button" href="{{URL::to('lecturer/logout')}}">Exit</a>
+             </div>
+  @endif
+        <br>
+
 {{--<p>{{$classList}}</p>--}}
-</body>
-</html>
+@endsection

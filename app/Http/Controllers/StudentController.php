@@ -25,7 +25,7 @@ class StudentController extends Controller
                 return redirect('proceed');
             }elseif($username == $result['index_no'] && $password != $result['ref_no']){
 
-                $errorMessage = 'wrong password';
+                $errorMessage = 'Your reference number is incorrect ';
                 return view('errors.error', compact('errorMessage'));
             }else{
 
@@ -47,8 +47,10 @@ class StudentController extends Controller
     }
     public function showresult(){
         $index = Session::get('IndexNumber');
+        $student = Student::where('index_no', '=', $index)->get();
+        $name = $student[0]->student_name;
         $results = Student::getResult($index);
-        return view('student.result', compact('results'));
+        return view('student.result', [ 'results' => $results , 'name' => $name]);
 
     }
     public function logout(){

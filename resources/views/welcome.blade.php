@@ -1,50 +1,28 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Laravel</title>
+@extends('layouts.master')
+@section('title' , 'Home')
 
-    <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
+@section('head')
+    <link href="{{URL::To('css/welcome.css')}}" rel='stylesheet' type='text/css'>
+@endsection
 
-    <style>
-        html, body {
-            height: 100%;
-        }
+@section('logout')
+    @if(false)
+    <a href="{{URL::to('student/logout')}}">Logout</a>
+    @endif
+@endsection
 
-        body {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            display: table;
-            font-weight: 100;
-            font-family: 'Lato';
-        }
+@section('content')
+    <section class="wrapper">
+    <section class="leftCol">
+        <div class="cover-photo"><img src="{{URL::to('img/student.png')}}" alt=""/></div>
+        <div class="text">Student</div>
+        <a href="{{URL::to('student/login')}}" class="button">Proceed</a>
+        </section>{{--
+    --}}<section class="rightCol">
+            <div class="cover-photo"><img src="{{URL::to('img/lecturer1.png')}}" alt=""/></div>
+            <div class="text">Lecturer</div>
+            <a href="{{URL::to('lecturer/login')}}" class="button">Proceed</a>
+        </section>
+    </section>
+@endsection
 
-        .container {
-            text-align: center;
-            display: table-cell;
-            vertical-align: middle;
-        }
-
-        .content {
-            text-align: center;
-            display: inline-block;
-        }
-
-        .title {
-            font-size: 96px;
-        }
-    </style>
-</head>
-<body>
-<div class="container">
-    <div class="content">
-        <div class="title">Online Result Checker</div>
-
-        <ul>
-            <li><a href="{{url('studentlogin')}}">Student Login</a> </li>
-            <li><a href="{{url('lecturerlogin')}}">Lecturer Login</a> </li>
-        </ul>
-    </div>
-</div>
-</body>
-</html>

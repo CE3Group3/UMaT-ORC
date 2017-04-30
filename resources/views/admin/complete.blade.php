@@ -15,10 +15,11 @@
 @section('content')
 
     <div class="message-wrapper">
+        <h2>You've approved {{$course_code}} successfully</h2>
 
-            <h2>{{$errorMessage}}</h2>
+        <a class="button" href="{{URL::to('admin/dashboard')}}">Proceed</a>
+        <a class="button" href="{{URL::to('lecturer/logout')}}">Exit</a>
 
-            <a href="{{url('/')}}"> <input class="button" type="submit" name="submit" value="Home"> </a>
-        </div>
+    </div>
 
 @endsection

@@ -17,10 +17,10 @@ Route::get('/', function () {
 });
 
 //Routes for login page for users
-Route::get('studentlogin', function () {
+Route::get('student/login', function () {
     return view('login.student');
 });
-Route::get('lecturerlogin', function () {
+Route::get('lecturer/login', function () {
     return view('login.lecturer');
 });
 Route::get('/reserved/auth/admin-login', function () {
@@ -29,16 +29,24 @@ Route::get('/reserved/auth/admin-login', function () {
 
 Route::get('proceed','StudentController@proceed');
 Route::get('lecturer/dashboard','LecturerController@dashboardLecturer');
-Route::get('showresult','StudentController@showresult');
-Route::get('logout','StudentController@logout');
+Route::get('student/showresult','StudentController@showresult');
+Route::get('student/logout','StudentController@logout');
+Route::get('lecturer/logout','LecturerController@logout');
+Route::get('admin/dashboard','AdminController@dashboard');
 
 
 //Post routes for users login
-Route::post('studentlogin', 'StudentController@login');
-Route::post('lecturerlogin', 'LecturerController@login');
+Route::post('student/login', 'StudentController@login');
+Route::post('lecturer/login', 'LecturerController@login');
 Route::post('lecturer/fill', 'LecturerController@course');
-Route::post('adminlogin', 'AdminController@login');
+Route::get('lecturer/success', 'LecturerController@success');
+Route::get('lecturer/fail', 'LecturerController@fail');
+Route::post('admin/login', 'AdminController@login');
+Route::post('admin/courses', 'AdminController@courses');
+Route::post('admin/approve', 'AdminController@approve');
+Route::post('admin/approve/results', 'AdminController@approveResults');
 Route::post('fillresults', 'LecturerController@fillresult');
+
 
 
 

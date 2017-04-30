@@ -1,0 +1,62 @@
+body{
+    background-color:  rgb(230,230,230);
+}
+.wrapper{
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+.leftCol, .rightCol{
+    display: inline-block;
+    width: 50%;
+    /*background-color: red;*/
+    text-align: center;
+}
+
+
+.text{
+    margin: 25px 0px;
+    cursor: pointer;
+    font-size: 18px;
+
+}
+
+
+
+.cover-photo{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 2px solid #263025;
+    display: inline-block;
+    margin-top: 70px;
+
+}
+.student-marks{
+    display: block;
+    width: 70%;
+    margin: 40px auto;
+}
+
+.student-marks > label , .student-marks > input{
+    display: inline-block;
+    text-align: center;
+
+}
+.student-marks > label {
+    width: 30%;
+}
+
+.student-marks > input
+{
+    height: 25px;
+    border-radius: 3px;
+    border: none;
+    display: inline-block;
+    width: 30%;
+}
+#submit{
+    display: block;
+    text-align: center;
+}
